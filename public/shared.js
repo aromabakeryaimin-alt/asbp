@@ -1,0 +1,10 @@
+import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import {getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import {getFunctions,httpsCallable} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-functions.js";
+import {firebaseConfig} from "./firebase-config.js";
+export const app=initializeApp(firebaseConfig),auth=getAuth(app),provider=new GoogleAuthProvider(),functions=getFunctions(app,"asia-southeast1");
+export {signInWithPopup,signOut,onAuthStateChanged};
+export const call=n=>httpsCallable(functions,n);
+export const $=id=>document.getElementById(id);
+export const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+export const fmt=t=>t?new Date(t).toLocaleString("zh-HK"):"—";
